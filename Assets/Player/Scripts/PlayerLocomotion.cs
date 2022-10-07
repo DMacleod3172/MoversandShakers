@@ -10,7 +10,10 @@ public class PlayerLocomotion : MonoBehaviour
     CharacterController characterController;
     Transform playerContainer, cameraContainer;
 
-    public float speed = 6.0f;
+    public float runSpeed = 9f;
+    public float jogSpeed = 6f;
+
+    public float speed = 4f;
     public float jumpspeed = 10f;
     public float mouseSensitivity = 2f;
     public float gravity = 20.0f;
@@ -55,6 +58,17 @@ public class PlayerLocomotion : MonoBehaviour
 
     void Locomotion()
     {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed;
+        }
+        else
+        {
+            speed = jogSpeed;
+        }
+
+
+
         if(characterController.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
